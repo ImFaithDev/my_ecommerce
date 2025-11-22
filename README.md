@@ -1,9 +1,9 @@
 # Simple E-Commerce App
 
-A modern and lightweight **E-Commerce web app** built with **React**, **Vite**, and **Tailwind CSS**.  
+A modern and lightweight E-Commerce web app built with React, Vite, and Tailwind CSS.  
 It features a clean UI, responsive design, and a simple cart drawer system.
 
-## 🚀 Features
+## Features
 
 - Add and remove products from the cart
 - View cart summary in a slide-in drawer

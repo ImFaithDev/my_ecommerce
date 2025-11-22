@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Navbar({ cartCount, onOpenCart }) {
+function Navbar({ cartCount, onOpenCart }) {
   return (
     <nav className='bg-white shadow sticky top-0 z-10'>
       <div className='max-w-6xl mx-auto px-4 py-4 flex items-center justify-between'>
@@ -29,3 +29,5 @@ export default function Navbar({ cartCount, onOpenCart }) {
     </nav>
   );
 }
+
+export default Navbar;

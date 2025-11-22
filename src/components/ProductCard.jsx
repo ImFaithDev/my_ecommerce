@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function ProductCard({ product, onAdd }) {
+function ProductCard({ product, onAdd }) {
   return (
     <div className='bg-white rounded-2xl overflow-hidden shadow hover:shadow-lg transform hover:-translate-y-1 transition p-3 flex flex-col'>
       <img
@@ -23,3 +23,5 @@ export default function ProductCard({ product, onAdd }) {
     </div>
   );
 }
+
+export default ProductCard;

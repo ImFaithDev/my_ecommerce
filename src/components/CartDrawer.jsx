@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function CartDrawer({ open, items, onClose, onRemove }) {
+function CartDrawer({ open, items, onClose, onRemove, onDecreseQty }) {
   return (
     <div
       className={
@@ -51,6 +51,12 @@ export default function CartDrawer({ open, items, onClose, onRemove }) {
                 <div className='font-medium'>{it.product.name}</div>
                 <div className='text-sm text-gray-500'>
                   quantity: {it.quantity} × {it.product.price}
+                  <button
+                    onClick={() => onDecreseQty(it.product.id)}
+                    className='ml-5 border-8'
+                  >
+                    -
+                  </button>
                 </div>
               </div>
               <div>
@@ -80,3 +86,5 @@ export default function CartDrawer({ open, items, onClose, onRemove }) {
     </div>
   );
 }
+
+export default CartDrawer;

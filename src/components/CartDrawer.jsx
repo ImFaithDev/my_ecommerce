@@ -50,7 +50,7 @@ function CartDrawer({ open, items, onClose, onRemove, onDecreseQty }) {
               <div className='flex-1'>
                 <div className='font-medium'>{it.product.name}</div>
                 <div className='text-sm text-gray-500'>
-                  quantity: {it.quantity} × {it.product.price}
+                  Quantity: {it.quantity} × ${it.product.price}
                   <button
                     onClick={() => onDecreseQty(it.product.id)}
                     className='ml-5 border-8'

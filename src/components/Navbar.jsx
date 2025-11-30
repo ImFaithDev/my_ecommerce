@@ -6,7 +6,7 @@ function Navbar({ cartCount, onOpenCart }) {
       <div className='max-w-6xl mx-auto px-4 py-4 flex items-center justify-between'>
         <div className='flex items-center gap-3'>
           <div className='text-2xl font-extrabold text-blue-600'>
-            Online Shop
+            Apple World
           </div>
         </div>
 

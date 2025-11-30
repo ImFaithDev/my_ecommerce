@@ -6,7 +6,7 @@ function ProductCard({ product, onAdd }) {
       <img
         src={product.image}
         alt={product.name}
-        className='w-full h-40 object-cover rounded-lg mb-3'
+        className='w-full h-100 object-cover rounded-lg mb-3'
       />
       <div className='flex-1'>
         <h3 className='font-semibold text-lg'>{product.name}</h3>

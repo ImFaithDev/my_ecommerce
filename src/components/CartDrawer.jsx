@@ -1,6 +1,13 @@
 import React from 'react';
 
-function CartDrawer({ open, items, onClose, onRemove, onDecreseQty }) {
+function CartDrawer({
+  open,
+  items,
+  onClose,
+  onRemove,
+  onIncreaseQty,
+  onDecreaseQty,
+}) {
   return (
     <div
       className={
@@ -9,28 +16,14 @@ function CartDrawer({ open, items, onClose, onRemove, onDecreseQty }) {
       }
     >
       <div className='p-4 border-b flex items-center justify-between'>
-        <h3 className='text-lg font-semibold'>Your Cart</h3>
+        <h3 className='text-lg  text-gray-600 font-semibold'>Your Cart</h3>
 
         <button
           type='button'
-          class=' text-red-500 focus:outline-none '
+          class=' text-gray-600 focus:outline-none '
           onClick={onClose}
         >
-          <svg
-            class='h-6 w-6'
-            xmlns='http://www.w3.org/2000/svg'
-            fill='none'
-            viewBox='0 0 24 24'
-            stroke='currentColor'
-            aria-hidden='true'
-          >
-            <path
-              stroke-linecap='round'
-              stroke-linejoin='round'
-              stroke-width='2'
-              d='M6 18L18 6M6 6l12 12'
-            />
-          </svg>
+          Close
         </button>
       </div>
 
@@ -45,18 +38,27 @@ function CartDrawer({ open, items, onClose, onRemove, onDecreseQty }) {
               <img
                 src={it.product.image}
                 alt={it.product.name}
-                className='w-16 h-12 object-cover rounded'
+                className='w-16 h-12 object-scale-down rounded '
               />
               <div className='flex-1'>
                 <div className='font-medium'>{it.product.name}</div>
-                <div className='text-sm text-gray-500'>
-                  Quantity: {it.quantity} × ${it.product.price}
+                <div className='flex my-1'>
                   <button
-                    onClick={() => onDecreseQty(it.product.id)}
-                    className='ml-5 border-8'
+                    className='  border-2 px-1.5  hover:bg-gray-200'
+                    onClick={() => onDecreaseQty(it.product.id)}
                   >
                     -
                   </button>
+                  <span className=' border-y-2 px-3'>{it.quantity}</span>
+                  <button
+                    className=' border-2 px-1 hover:bg-gray-200'
+                    onClick={() => onIncreaseQty(it.product.id)}
+                  >
+                    +
+                  </button>
+                </div>
+                <div className='text-xs text-gray-500'>
+                  Quantity: {it.quantity} × ${it.product.price}
                 </div>
               </div>
               <div>
@@ -64,7 +66,27 @@ function CartDrawer({ open, items, onClose, onRemove, onDecreseQty }) {
                   onClick={() => onRemove(it.product.id)}
                   className='text-red-500 text-sm'
                 >
-                  Delete
+                  <button
+                    type='button'
+                    class=' text-red-500 focus:outline-none '
+                    onClick={onClose}
+                  >
+                    <svg
+                      class='h-6 w-6'
+                      xmlns='http://www.w3.org/2000/svg'
+                      fill='none'
+                      viewBox='0 0 24 24'
+                      stroke='currentColor'
+                      aria-hidden='true'
+                    >
+                      <path
+                        stroke-linecap='round'
+                        stroke-linejoin='round'
+                        stroke-width='2'
+                        d='M6 18L18 6M6 6l12 12'
+                      />
+                    </svg>
+                  </button>
                 </button>
               </div>
             </div>
@@ -79,7 +101,7 @@ function CartDrawer({ open, items, onClose, onRemove, onDecreseQty }) {
             ${items.reduce((s, it) => s + it.product.price * it.quantity, 0)}
           </div>
         </div>
-        <button className='w-full bg-green-600 text-white py-2 rounded-lg'>
+        <button className='w-full bg-green-600 transform transition hover:bg-green-500 text-white py-2 rounded-lg'>
           Purchase
         </button>
       </div>

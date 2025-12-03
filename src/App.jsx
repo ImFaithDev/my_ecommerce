@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Navbar from './components/Navbar';
 import ProductList from './components/ProductList';
 import CartDrawer from './components/CartDrawer';
+import { products } from './data/products';
 
 export default function App() {
   const [cartOpen, setCartOpen] = useState(false);
@@ -9,6 +10,23 @@ export default function App() {
     const saved = JSON.parse(localStorage.getItem('cart-items'));
     return saved ? saved : [];
   });
+
+  const [searchTerm, setSearchTerm] = useState('');
+  const [searchFound, setSearchFound] = useState([]);
+
+  useEffect(() => {
+    if (!searchTerm) {
+      setSearchFound([]);
+      return;
+    }
+
+    const filtered = products.filter((p) =>
+      p.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    setSearchFound(filtered);
+    console.log('Filtered items:', filtered);
+  }, [searchTerm, items]);
 
   useEffect(() => {
     localStorage.setItem('cart-items', JSON.stringify(items));
@@ -27,6 +45,16 @@ export default function App() {
       }
 
       return [...items, { product, quantity: 1 }];
+    });
+  }
+
+  function handleIncreaseQty(productId) {
+    setItems((prev) => {
+      return prev.map((item) =>
+        item.product.id === productId
+          ? { ...item, quantity: item.quantity + 1 }
+          : item
+      );
     });
   }
 
@@ -50,14 +78,21 @@ export default function App() {
 
   return (
     <div className='min-h-screen bg-gray-100'>
-      <Navbar cartCount={cartCount} onOpenCart={() => setCartOpen(true)} />
+      <Navbar
+        cartCount={cartCount}
+        onOpenCart={() => setCartOpen(true)}
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        searchFound={searchFound}
+      />
       <ProductList onAdd={handleAdd} />
       <CartDrawer
         open={cartOpen}
         items={items}
         onClose={() => setCartOpen(false)}
         onRemove={handleRemove}
-        onDecreseQty={handleDecreaseQty}
+        onDecreaseQty={handleDecreaseQty}
+        onIncreaseQty={handleIncreaseQty}
       />
     </div>
   );

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Navbar from './components/Navbar';
 import ProductList from './components/ProductList';
 import CartDrawer from './components/CartDrawer';
+import Footer from './components/Footer';
 import { products } from './data/products';
 
 export default function App() {
@@ -101,6 +102,7 @@ export default function App() {
           onClick={() => setCartOpen(false)}
         ></div>
       )}
+      <Footer />
     </div>
   );
 }

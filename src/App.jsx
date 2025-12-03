@@ -77,7 +77,7 @@ export default function App() {
   const cartCount = items.reduce((s, i) => s + i.quantity, 0);
 
   return (
-    <div className='min-h-screen bg-gray-100'>
+    <div className='min-h-screen bg-gray-100 z-50'>
       <Navbar
         cartCount={cartCount}
         onOpenCart={() => setCartOpen(true)}
@@ -85,6 +85,7 @@ export default function App() {
         setSearchTerm={setSearchTerm}
         searchFound={searchFound}
       />
+
       <ProductList onAdd={handleAdd} />
       <CartDrawer
         open={cartOpen}
@@ -94,6 +95,12 @@ export default function App() {
         onDecreaseQty={handleDecreaseQty}
         onIncreaseQty={handleIncreaseQty}
       />
+      {cartOpen && (
+        <div
+          className='fixed inset-0 bg-black/50 z-40'
+          onClick={() => setCartOpen(false)}
+        ></div>
+      )}
     </div>
   );
 }

@@ -12,8 +12,9 @@ function CartDrawer({
     <div
       className={
         (open ? 'translate-x-0' : 'translate-x-full') +
-        ' fixed flex flex-col top-16 right-0 h-[calc(80%-4rem)] w-full sm:w-96  bg-white shadow-xl transform transition-transform rounded-lg '
+        ' fixed flex flex-col top-16 right-0 h-[calc(80%-4rem)] w-full sm:w-96  bg-white shadow-xl transform transition-transform rounded-lg z-50'
       }
+      onClick={(e) => e.stopPropagation()}
     >
       <div className='p-4 border-b flex items-center justify-between'>
         <h3 className='text-lg  text-gray-600 font-semibold'>Your Cart</h3>

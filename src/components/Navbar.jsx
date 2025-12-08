@@ -11,7 +11,7 @@ function Navbar({
     <nav className='bg-white shadow sticky top-0 z-10'>
       <div className='max-w-6xl mx-auto px-4 py-4 flex items-center justify-between'>
         <div className='flex items-center gap-3'>
-          <div className='text-2xl font-extrabold text-blue-600 font-mono'>
+          <div className='text-2xl font-extrabold text-blue-600 font-mono cursor-pointer  '>
             Apple Kingdom
           </div>
         </div>
